@@ -22,18 +22,18 @@ const Home = () => {
 
     return(
         <>  
-            <RandomButton giveMeTheListPls={bodies}></RandomButton>
-            {loading ? (<p>mamaguevo</p>):(bodies.map(info => {
-                return(
-                    <Card key={info.id} onClick={() => navigate(`/details/${info.id}`)}>
+            {loading ? (<Typography>Mamaguevo</Typography>):
+            (
+            
+            <><RandomButton giveMeListPls={bodies}></RandomButton>
+            {  bodies.map(info => {return(
+                <Card onClick={() => navigate(`/details/${info.id}`)}>
                     <CardContent>
-                        <Typography>
-                            {info.englishName}
-                        </Typography>   
+                        <Typography>{info.name}</Typography>
                     </CardContent>
                 </Card>
-            )}))}
-            
+            )
+            })}</>)}
         </>
     )
 }

@@ -1,22 +1,19 @@
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
-const RandomButton = ({giveMeTheListPls}) => {    
-
-    const navigate = useNavigate();
-
-    const randomize = (giveMeTheListPls) => {
-        const randomIndex = Math.floor(Math.random()*giveMeTheListPls.length)
-        const randomSelected = giveMeTheListPls[randomIndex];
-        console.log(randomSelected)
-        navigate(`/details/${randomSelected}`)
-        
-    }
+const RandomButton = ({giveMeListPls}) => {  
     
+    const navigate = useNavigate();
+    
+    const randomize = (giveMeListPls) => {
+        const randomIndex = Math.floor(Math.random() * giveMeListPls.length);
+        const randomPlanet = giveMeListPls[randomIndex];
+        console.log(randomPlanet)
+        navigate(`/details/${randomPlanet.id}`)
+    }
+
     return(
-        <>
-        <Button onClick={() => randomize(giveMeTheListPls)}>Presioname wacho</Button>
-        </>
+        <Button onClick={() => randomize(giveMeListPls)}>PRESIONAME WACHO</Button>
     )
 }
 
