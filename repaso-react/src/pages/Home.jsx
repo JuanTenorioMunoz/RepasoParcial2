@@ -5,19 +5,23 @@ import { fetchAll } from "../services/fetch";
 
 const Home = () => {
 
-    const [bodies, setBodies] = useState([])
-    const [error, setError] = useState(null)
+    const [bodies, setBodies] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState([]);
     const navigate = useNavigate()
 
      useEffect(() => {
+        setLoading(true);
         fetchAll()
-        .then(data => setBodies(data))
+        .then(data => {
+            setBodies(data);
+            setLoading(false);})
         .catch(err => setError(err.message))
      }, [])
 
     return(
-        <>
-            {bodies.map(info => {
+        <>  
+            {loading ? (<p>mamaguevo</p>):(bodies.map(info => {
                 return(
                     <Card key={info.id} onClick={() => navigate(`/details/${info.id}`)}>
                     <CardContent>
@@ -26,7 +30,8 @@ const Home = () => {
                         </Typography>   
                     </CardContent>
                 </Card>
-            )})}
+            )}))}
+            
         </>
     )
 }
