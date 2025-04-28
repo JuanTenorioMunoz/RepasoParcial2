@@ -12,14 +12,12 @@ export const fetchAll = () => {
 }
 
 export const fetchById = (id) => {
-    return fetch(`${apiURL}${id}`)
+    return fetch(apiURL+id)
     .then(response => {
         if(!response.ok){
-            throw new Error("no id fetch")
+            throw new Error("Manito wtf")
         }
-        return response.json()
+        return response.json();
     })
-    .then(data => data)
+    .then(data => data);
 }
-
-

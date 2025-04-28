@@ -2,6 +2,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchAll } from "../services/fetch";
+import RandomButton from "../components/RandomButton/RandomButton";
 
 const Home = () => {
 
@@ -21,6 +22,7 @@ const Home = () => {
 
     return(
         <>  
+            <RandomButton giveMeTheListPls={bodies}></RandomButton>
             {loading ? (<p>mamaguevo</p>):(bodies.map(info => {
                 return(
                     <Card key={info.id} onClick={() => navigate(`/details/${info.id}`)}>
